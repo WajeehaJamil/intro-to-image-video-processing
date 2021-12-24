@@ -1,0 +1,12 @@
+function [img0, img45,img90,img135] = directional_filtering(img, size)
+    filter_0=zeros(size);
+    filter_0(size/2+0.5,:)=ones(1,size)/size; % 0 degree
+    filter_9=filter_0'; % 90 degree
+    filter_135=eye(size)/size; %135 degree
+    filter_45= rot90(filter_135); % 45 degree
+    
+    img0=imfilter(img,filter_0);
+    img45=imfilter(img,filter_45);
+    img90=imfilter(img,filter_90);
+    img135=imfilter(img,filter_135);
+end
